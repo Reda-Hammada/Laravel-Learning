@@ -5,7 +5,7 @@
 
 @foreach($users as $key => $user)
 
-@if($loop->even)
+@if($loop->remaining)
 
 <h3 style="background-color:blue">{{ $key }}.{{ $user['name'] }}</h3>
 <p>{{ $user['occupation'] }}</p>
@@ -20,6 +20,28 @@
 
 @endif
 
+
+
 @endforeach
+
+@php 
+
+$randomNumber = random_int(0,100);
+
+echo $randomNumber;
+
+
+@endphp
+
+
+@php $done = false @endphp
+
+@while($done == false)
+
+<div>It is done</div>
+@break
+
+@endwhile
+
 
 @endsection
