@@ -175,3 +175,35 @@ return view('users.users', compact('users'));
 
 
 
+Route::get('/books', function(){
+
+    $books = [
+
+        [
+            'title'=>'intro to symphony',
+            'body'=>'lorem lorem lorem lorem lorem loem'
+        ],
+        [
+            'title'=>'intro to symphony',
+            'body'=>'lorem lorem lorem lorem lorem loem'
+        ],
+        [
+            'title'=>'intro to symphony',
+            'body'=>'lorem lorem lorem lorem lorem loem'
+        ],
+       
+       
+
+
+    ];
+
+    return view('partials.books',compact('books'));
+});
+
+
+
+Route::get('/book', function(){
+
+
+    return view('partials.book');
+});
