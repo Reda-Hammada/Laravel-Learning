@@ -3,6 +3,8 @@
 
 @section('content')
 
+@php print_r($book) @endphp
+
 @if($loop->odd)
 
 <h1>{{ $key }} . {{ $book['title'] }}</h1>

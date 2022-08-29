@@ -142,7 +142,7 @@ Route::get('/userposts', function () use ($posts) {
 
 return view('posts.userposts', ['posts'=> $posts]);
 
-});
+})->name('posts.route');
 
 
 // using the loop variable 
@@ -206,4 +206,41 @@ Route::get('/book', function(){
 
 
     return view('partials.book');
+});
+
+
+Route::get('/response', function()  use($posts){
+
+    return response($posts, 200)->header('Content-Type', 'application/json')->cookie('user','reda',3600);
+}) ;
+
+
+// using redirect function 
+Route::get('/redirect', function (){
+
+    return redirect('/posts');
+
+});
+
+// redirect to the previous page 
+Route::get('/back', function(){
+
+    return back();
+
+});
+
+
+
+// redirect using named route
+Route::get('/named', function () {
+
+    return redirect()->route('posts.route');
+});
+
+
+// redirect to external links
+
+Route::get('/portfolio', function () {
+
+    return redirect()->away('https://hammada-reda.com');
 });
