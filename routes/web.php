@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -281,4 +282,61 @@ Route::prefix('/groupping')->group(function () {
     });
 
 
+ 
+
+
+});
+
+
+
+// reading requests and inputs
+Route::get('/request', function (Request $request) {
+
+    // Retrieve path
+    $uri = $request->path();
+    echo $uri . '<br>';
+    // retrieve method
+    $method = $request->method();
+
+    echo $method . '<br>';
+
+    // Retrieve ip address 
+
+    $ipAddress = $request->ip();
+
+    echo $ipAddress . '<br>';
+
+
+    // Retrieving all input data
+    $request->all();
+
+    // Retrieve all the incoming request input data as a collection 
+
+    $request->collect();
+
+    //Retrieve an input value
+    $input = $request->input('name');
+    echo $input . '<br>';
+
+    // Retrieving Input From The Query String
+    $queries = $request->query('age');
+
+    echo $queries . '<br>';
+
+
+    //if has 
+
+    if($request->has('name')){
+
+            echo 'name exists';
+
+    }else {
+
+        echo 'name does not exists';
+    }
+
+
+    // when has
+
+    
 });
