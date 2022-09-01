@@ -328,15 +328,28 @@ Route::get('/request', function (Request $request) {
 
     if($request->has('name')){
 
-            echo 'name exists';
+            echo 'name exists' . '<br>';
 
     }else {
 
-        echo 'name does not exists';
+        echo 'name does not exists' . '<br>';
     }
 
 
     // when has
 
+    $request->whenHas(['age', 'occupation'], function(){
+
+
+        echo ' age and occupation both are set' . '<br>';
+    },
     
+    function(){
+
+
+        echo 'the request lacks occupation' . '<br>';
+
+    });
+
+
 });
