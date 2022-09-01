@@ -244,3 +244,41 @@ Route::get('/portfolio', function () {
 
     return redirect()->away('https://hammada-reda.com');
 });
+
+//returning JSON through reponse 
+Route::get('/json', function() use($posts) {
+
+    return  response()->json($posts);
+});
+
+
+
+// Route groupping 
+
+Route::prefix('/groupping')->group(function () {
+
+    Route::get('home',function(){
+
+        return view('groupping.home');
+    });
+
+    Route::get('contact', function(){
+
+        return view('groupping.contact');
+    });
+
+    Route::get('about', function(){
+        
+        return view('groupping.about');
+
+    });
+
+    Route::get('redirect', function (){
+
+
+        return redirect('/home');
+
+    });
+
+
+});
