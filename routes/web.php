@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Postscontroller;
+use App\Http\Controllers\serviceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +31,7 @@ Route::get('/route', function () {
 })->name('route page');
 
 
-
+Route::resource('Resourceposts', Postscontroller::class)->only(['index','show']);
 
 // optional parameteres 
 //  Constraining Route parameters values
@@ -40,15 +43,14 @@ Route::get('/route', function () {
 // })->where(['id'=>'[0-9]+'])->name('postbyid');
 
 // view & template 
-Route::get('/home', function(){
 
-    return view('home.index');
-});
+Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/contact', function(){
+Route::get('/contanct', [HomeController::class, 'contact']);
 
-    return view('home.contact');
-});
+Route::get('/about', [HomeController::class, 'about']);
+
+Route::get('/services', serviceController::class);
 
 Route::get('/post/{id}', function($id){
 
@@ -78,48 +80,48 @@ Route::get('/post/{id}', function($id){
 
 // passing data to the view through compact built in function 
 
-Route::get('/posts', function(){
+// Route::get('/posts', function(){
 
 
-    $posts = [
+//     $posts = [
 
-      [
-            'id'=>1,
-            'title'=> "Intro to Laravel",
-            'content'=>"This is a short introduction to Laravel PHP framework",
-        ],
+//       [
+//             'id'=>1,
+//             'title'=> "Intro to Laravel",
+//             'content'=>"This is a short introduction to Laravel PHP framework",
+//         ],
 
-        [
-            'id'=>2,
-            'title' =>  "Intro to React.js",
-            "content"=>"this is a short introduction to React.js",
-        ],
+//         [
+//             'id'=>2,
+//             'title' =>  "Intro to React.js",
+//             "content"=>"this is a short introduction to React.js",
+//         ],
 
-       [
+//        [
 
-            'id'=>3,
-            'title' =>  "Intro to Vue.js",
-            "content"=>"this is a short introduction to Vue.js",
-        ],
+//             'id'=>3,
+//             'title' =>  "Intro to Vue.js",
+//             "content"=>"this is a short introduction to Vue.js",
+//         ],
 
-        [   
+//         [   
 
-            'id'=>4,
-            'title' => "Intro to Angular.js",
-            "content"=>"this is a short introduction to Angular.js",
-        ],
+//             'id'=>4,
+//             'title' => "Intro to Angular.js",
+//             "content"=>"this is a short introduction to Angular.js",
+//         ],
 
-        [
-            'id'=>5,
-            'title' => "Intro to symphony",
-            "content"=>"this is a short introduction to symphony",
-        ]
+//         [
+//             'id'=>5,
+//             'title' => "Intro to symphony",
+//             "content"=>"this is a short introduction to symphony",
+//         ]
 
 
-    ];
+//     ];
 
-    return view('/posts.posts', compact('posts'));
-});
+//     return view('/posts.posts', compact('posts'));
+// });
 
 
 
@@ -330,7 +332,10 @@ Route::get('/request', function (Request $request) {
 
             echo 'name exists' . '<br>';
 
-    }else {
+    }
+    else 
+    
+    {
 
         echo 'name does not exists' . '<br>';
     }
