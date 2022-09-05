@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Posts;
 
 class Postscontroller extends Controller
 {
@@ -50,8 +51,8 @@ class Postscontroller extends Controller
     public function index()
     {
         //
-
-        return view('posts.posts', ['posts'=>$this->posts]);
+        return view('posts.posts', ['posts'=>Posts::all()]);
+        
     }
 
     /**
@@ -85,9 +86,7 @@ class Postscontroller extends Controller
     {
         //
 
-        abort_if(!isset($this->posts[$id]), 404);
-
-        return view('posts.post', ['post'  => $this->posts[$id]]);
+        return view('posts.post', ['post'  => Posts::findOrFail($id)]);
     }
 
     /**
