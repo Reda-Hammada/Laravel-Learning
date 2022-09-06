@@ -31,7 +31,7 @@ Route::get('/route', function () {
 })->name('route page');
 
 
-Route::resource('Resourceposts', Postscontroller::class)->only(['index','show']);
+Route::resource('Resourceposts', Postscontroller::class);
 
 // optional parameteres 
 //  Constraining Route parameters values

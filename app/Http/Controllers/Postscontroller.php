@@ -9,39 +9,7 @@ class Postscontroller extends Controller
 {
 
 
-    private  $posts = [
-
-       1=> [
-              
-              'title'=> "Intro to Laravel",
-              'content'=>"This is a short introduction to Laravel PHP framework",
-          ],
-  
-         2=> [
-              
-              'title' =>  "Intro to React.js",
-              "content"=>"this is a short introduction to React.js",
-          ],
-  
-        3=> [
-  
-              'title' =>  "Intro to Vue.js",
-              "content"=>"this is a short introduction to Vue.js",
-          ],
-  
-         4=> [   
-  
-              'title' => "Intro to Angular.js",
-              "content"=>"this is a short introduction to Angular.js",
-          ],
-  
-         5=> [
-              'title' => "Intro to symphony",
-              "content"=>"this is a short introduction to symphony",
-          ]
-  
-  
-      ];
+    
 
     /**
      * Display a listing of the resource.
@@ -63,6 +31,8 @@ class Postscontroller extends Controller
     public function create()
     {
         //
+
+        return view('posts.createpost');
     }
 
     /**
@@ -74,6 +44,13 @@ class Postscontroller extends Controller
     public function store(Request $request)
     {
         //
+            $post = new Posts();
+            $post->title =  $request->input('title');
+            $post->content = $request->input('content');
+            $post->save();
+
+            return redirect()->route('Resourceposts.index');
+            
     }
 
     /**
