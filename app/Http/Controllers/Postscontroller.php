@@ -44,11 +44,24 @@ class Postscontroller extends Controller
     public function store(Request $request)
     {
         //
+
+        // form validation
+            $request->validate([
+                
+                'title' =>'required',
+                 'content'=>'required',
+
+            ]);
+
+        
+        // insert data into database 
+
             $post = new Posts();
             $post->title =  $request->input('title');
             $post->content = $request->input('content');
             $post->save();
-
+            
+            // redirect to main posts page
             return redirect()->route('Resourceposts.index');
             
     }
