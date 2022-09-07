@@ -53,6 +53,8 @@ class Postscontroller extends Controller
 
             ]);
 
+            $title = $request->old('title');
+            $content = $request->old('content');
         
         // insert data into database 
 

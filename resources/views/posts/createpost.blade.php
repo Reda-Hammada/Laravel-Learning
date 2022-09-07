@@ -11,17 +11,19 @@
 
     <div>
 
-        <input type='text' name='title' />
+        <input type='text' name='title' value="{{ old('title') }}" />
 
     </div>
 
     @error('title')
         <div>{{ $message }}</div>
     @enderror
-    
+
     <div>
 
-        <textarea name='content'>
+        <textarea name='content' >
+
+            {{ old('content') }}
 
         </textarea>
 
