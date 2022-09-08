@@ -8,7 +8,19 @@
 </head>
 <body>
   <div>
-    @yield('content')    
+
+
+    @if(session('status'))
+
+    <div>{{ session('status') }}</div>
+
+
+    @endif
+    
+    @yield('content')
+    
+    
+   
   </div>
 </body>
 </html>

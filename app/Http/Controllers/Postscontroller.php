@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use App\Http\Requests\Postrequest;
 
 class Postscontroller extends Controller
 {
@@ -41,17 +42,11 @@ class Postscontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Postrequest $request)
     {
         //
 
         // form validation
-            $request->validate([
-                
-                'title' =>'required',
-                 'content'=>'required',
-
-            ]);
 
             $title = $request->old('title');
             $content = $request->old('content');
@@ -62,6 +57,11 @@ class Postscontroller extends Controller
             $post->title =  $request->input('title');
             $post->content = $request->input('content');
             $post->save();
+
+
+            $request->session()->flash('status', 'blog post added');
+
+            
             
             // redirect to main posts page
             return redirect()->route('Resourceposts.index');
