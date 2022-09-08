@@ -81,6 +81,10 @@ class Postscontroller extends Controller
     public function edit($id)
     {
         //
+        $posts = new Posts();
+        
+        return view('posts.edit', ['post'=>Posts::findOrFail($id)]);
+
     }
 
     /**
@@ -95,7 +99,7 @@ class Postscontroller extends Controller
         //
     }
 
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
