@@ -47,24 +47,15 @@ class Postscontroller extends Controller
         //
 
         // form validation
-
-            $title = $request->old('title');
-            $content = $request->old('content');
+            $validated  = $request->validated();
         
         // insert data into database 
-
-            $post = new Posts();
-            $post->title =  $request->input('title');
-            $post->content = $request->input('content');
-            $post->save();
-
+            $post = Posts::create($validated); 
 
             $request->session()->flash('status', 'blog post added');
 
-            
-            
             // redirect to main posts page
-            return redirect()->route('Resourceposts.index');
+            return redirect()->route('Resourceposts.index'); 
             
     }
 
