@@ -97,7 +97,21 @@ class Postscontroller extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+         $request->validate([
+                'title' => 'bail|required',
+                'content' => 'required',
+         ]);
+
+         $title = $request->input('title');
+         $content = $request->input('content');
+         $post  = new Posts();
+         $post->where('id', $id)->update(['title'=>$title , 'content'=> $content]);
+
+         $request->session()->flash('status', 'post has been successfully updated');
+
+         return view('posts.post', ["post" =>$post->find($id)]);
+    
+    }   
 
      /**
      * Remove the specified resource from storage.
@@ -108,5 +122,13 @@ class Postscontroller extends Controller
     public function destroy($id)
     {
         //
+
+        $post = Posts::findOrFail($id);
+    
+        $post->delete();
+
+         session()->flash('status', 'post has been successfuly delete');
+
+         return redirect()->route('Resourceposts.index');
     }
 }
