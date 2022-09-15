@@ -23,8 +23,8 @@
     </div>
     @error('content')
     <div>{{ $message }}</div>
-@enderror
+    @enderror
             <input type='submit' value='update' />
 </form>
 
-@endsection
+@endsection 
