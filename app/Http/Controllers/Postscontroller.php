@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use App\Models\Author;
 use App\Http\Requests\Postrequest;
 
 class Postscontroller extends Controller
@@ -47,10 +48,15 @@ class Postscontroller extends Controller
         //
 
         // form validation
-            $validated  = $request->validated();
         
         // insert data into database 
-            $post = Posts::create($validated); 
+            $posts = new Posts();
+
+            $posts->title = $request->title;
+            $posts->content = $request->title;
+            $posts->author_id = 1;
+            $posts->save();
+
 
             $request->session()->flash('status', 'blog post added');
 
@@ -69,7 +75,11 @@ class Postscontroller extends Controller
     {
         //
 
-        return view('posts.post', ['post'  => Posts::findOrFail($id)]);
+        // $post = new Posts();
+        $author = Author::where('id', $id)->first();
+         $post = Posts::with('Author')->where('author_id', $id)->first();
+
+        return view('posts.post', ['post'=>$post, 'author'=>$author]);
     }
 
     /**
@@ -109,7 +119,7 @@ class Postscontroller extends Controller
 
          $request->session()->flash('status', 'post has been successfully updated');
 
-         return view('posts.post', ["post" =>$post->find($id)]);
+         return view('posts.post', ["post" =>$post->findOrFail($id)]);
     
     }   
 
