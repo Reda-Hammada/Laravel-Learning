@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class AddForeignKeyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-
-            $table->bigIncrements('id');
-            $table->timestamps();
-            $table->string('title', 255);
-            $table->text('content');
-            $table->bigInteger('author_id');
+        //
+        Schema::table('posts', function (Blueprint $table)
+        {
+            $table->bigInteger('author_id')->change();
+            $table->foreign('author_id')->references('id')->on('authors')->change();            
         });
+
+        
     }
 
     /**
@@ -30,6 +30,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        //
     }
 }
