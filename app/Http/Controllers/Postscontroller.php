@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Posts;
 use App\Models\Author;
 use App\Http\Requests\Postrequest;
+// use Illuminate\Support\Facades\Auth;
 
 class Postscontroller extends Controller
 {
 
 
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -21,7 +25,16 @@ class Postscontroller extends Controller
     public function index()
     {
         //
-        return view('posts.posts', ['posts'=>Posts::all()]);
+        
+       
+
+
+            $posts =  Posts::All();
+            return view('posts.posts', [compact('posts')]);
+        
+      
+
+
         
     }
 

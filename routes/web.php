@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Postscontroller;
+use App\Http\Controllers\Imagecontroller;
 use App\Http\Controllers\serviceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::get('/route', function () {
 
 })->name('route page');
 
+Route::resource('Image',Imagecontroller::class);
 
 Route::resource('Resourceposts', Postscontroller::class);
 
@@ -362,4 +364,4 @@ Route::get('/request', function (Request $request) {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);

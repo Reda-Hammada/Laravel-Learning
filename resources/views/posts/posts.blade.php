@@ -8,15 +8,14 @@
 
 <h1>All Posts :</h1>
 <a href={{ route('Resourceposts.create') }}>Create</a>
-@forelse($posts as $post)
+@foreach($posts as $post)
     <h2>{{ $post['title'] }}</h2>
     <button><a href={{ route('Resourceposts.edit',[$post['id']])}}>Edit</a></button>
     <p>{{ $post['content'] }}</p>
     <button><a href={{ route('Resourceposts.show',[$post['id']])}}>post</a></button>
 
 
-@empty
-    <p>Posts not found</p>
-@endforelse
+
+@endforeach
 
 @endsection
