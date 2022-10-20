@@ -17,4 +17,11 @@ class Posts extends Model
     {
         return $this->belongsTo(Author::class);
     }
+    
+    public function image()
+    {
+        return $this->hasOne('App/image');
+
+    }
+    
 }

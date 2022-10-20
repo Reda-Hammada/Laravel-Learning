@@ -13,12 +13,12 @@ class AddForeignKeyTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('posts', function (Blueprint $table)
-        {
-            $table->bigInteger('author_id')->change();
-            $table->foreign('author_id')->references('id')->on('authors')->change();            
-        });
+        // //
+        // Schema::table('posts', function (Blueprint $table)
+        // {
+        //     $table->bigInteger('author_id')->change();
+        //     $table->foreign('author_id')->references('id')->on('authors')->change();            
+        // });
 
         
     }
