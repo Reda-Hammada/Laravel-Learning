@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\image;
+
 
 class Imagecontroller extends Controller
 {
@@ -15,7 +17,10 @@ class Imagecontroller extends Controller
     {
         //
 
-        return view('images.image');
+
+        $all = image::All();
+
+        return view('images.image',compact('all'));
     }
 
     /**
@@ -40,10 +45,15 @@ class Imagecontroller extends Controller
 
           if($request->hasFile('image')):
 
-            $image = $request->file('image');
-            $image->store('images');            
-            dump($image);
+            
+            $image = $request->file('image')->store('images');
 
+            $image_model = new image();
+            $image_model->path = $image;
+            $image_model->save();
+            
+
+            return redirect()->route('Image.index');
 
 
           endif;

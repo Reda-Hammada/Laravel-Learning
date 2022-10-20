@@ -12,4 +12,8 @@
 </form>
 
 
+@foreach ($all as $image )
+<img src="{{ asset('storage/'.$image->path) }}" width="120px" hight="120px" alt="" />
+@endforeach
+
 @endsection

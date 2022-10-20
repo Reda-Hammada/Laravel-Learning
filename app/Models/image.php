@@ -9,9 +9,4 @@ class image extends Model
 {
     use HasFactory;
 
-
-    public function Posts(){
-
-        return $this->belongsTo('App/Posts');
-    }
-}
+ }
