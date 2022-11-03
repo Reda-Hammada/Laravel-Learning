@@ -5,8 +5,10 @@
 
 @section('content')
 <h1>Cache example</h1>
-@foreach ($posts as $post )
-    <div>{{ $post }}</div>
-@endforeach
+<div>
+    @foreach ($posts as  $post)
+            <div>{{ $post['title'] }}</div>
+    @endforeach
+</div>
 
 @endsection

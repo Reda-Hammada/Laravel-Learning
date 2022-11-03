@@ -21,6 +21,7 @@ class Cachecontroller extends Controller
             {
                 return Posts::All();
             });
+
         return view(
             'cache.cache' ,['posts'=> $posts]
         );
