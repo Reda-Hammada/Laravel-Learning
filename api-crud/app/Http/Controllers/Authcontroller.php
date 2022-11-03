@@ -45,7 +45,7 @@ class Authcontroller extends Controller
 
                             return response([
 
-                                'user'=>$user,
+                                'user'=>$creds,
                                 'token'=>$token,
                             
 
