@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Postscontroller;
 use App\Http\Controllers\Imagecontroller;
 use App\Http\Controllers\serviceController;
+use App\Http\Controllers\Cachecontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::resource('/cache', Cachecontroller::class);
 Route::get('/', function () {
     return view('welcome');
 });
