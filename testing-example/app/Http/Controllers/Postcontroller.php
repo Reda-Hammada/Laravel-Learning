@@ -29,6 +29,8 @@ class Postcontroller extends Controller
     {
         //
 
+        return view('posts.create');
+
         
     }
 
@@ -41,6 +43,21 @@ class Postcontroller extends Controller
     public function store(Request $request)
     {
         //
+        $fields = $request->validate([
+            'title'=>'required|string',
+            'content'=>'required',
+        ]);
+
+        $post = new Posttest();
+        $post->title = $fields['title'];
+        $post->content = $fields['content'];
+        $post->save();
+        
+
+        return redirect()->route('posts');
+    
+
+
     }
 
     /**

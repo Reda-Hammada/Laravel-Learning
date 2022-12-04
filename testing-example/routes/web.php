@@ -18,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts',[Postcontroller::class, 'index']);
-Route::get('/postcreate',[[Postcontroller::class, 'create']]);
+Route::GET('posts',[Postcontroller::class,'index'])->name('posts');
+Route::GET('postcreate',[Postcontroller::class,'create'])->name('postcreate');
+Route::POST('poststore',[Postcontroller::class,'store'])->name('poststore');
