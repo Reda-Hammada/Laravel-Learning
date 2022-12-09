@@ -53,7 +53,7 @@ class Imagecontroller extends Controller
             $image_model->save();
             
 
-            return redirect()->route('Image.index');
+            return redirect()->route('Image');
 
 
           endif;

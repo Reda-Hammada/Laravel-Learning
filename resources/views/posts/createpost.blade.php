@@ -5,7 +5,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('Resourceposts.store') }}">
+<form method="POST" action="{{ route('/Resourecepoststore') }}">
 
     @csrf
 

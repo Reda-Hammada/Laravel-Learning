@@ -57,6 +57,8 @@ class Cachecontroller extends Controller
     public function show($id)
     {
         //
+        $sessionId = session()->getId();
+    
     }
 
     /**

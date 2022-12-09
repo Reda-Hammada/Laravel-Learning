@@ -44,8 +44,6 @@ return [
         ],
 
         
-    
-
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -64,6 +62,12 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+        ],
+
+        
+        'mysql_testing' => [
+            'driver' => 'mysql',
+            'database' => ':memory',
         ],
 
         'pgsql' => [

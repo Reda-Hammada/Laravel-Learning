@@ -32,9 +32,12 @@ Route::get('/route', function () {
 
 })->name('route page');
 
-Route::resource('Image',Imagecontroller::class);
+Route::get('/Image',[Imagecontroller::class, 'index'])->name('Image');
+Route::post('Imagestore', [Imagecontroller::class, 'store'])->name('Image.store');
 
-Route::resource('Resourceposts', Postscontroller::class);
+Route::post('Resourecepoststore', [Postscontroller::class, 'store']);
+Route::get('Resourecepostcreate',[Postscontroller::class, 'create']);
+Route::get('Resoureceposts',[Postscontroller::class,'index']);
 
 // optional parameteres 
 //  Constraining Route parameters values
@@ -46,6 +49,7 @@ Route::resource('Resourceposts', Postscontroller::class);
 // })->where(['id'=>'[0-9]+'])->name('postbyid');
 
 // view & template 
+
 
 Route::get('/', [HomeController::class, 'home']);
 

@@ -14,7 +14,7 @@ class Postscontroller extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -71,7 +71,7 @@ class Postscontroller extends Controller
             $request->session()->flash('status', 'blog post added');
 
             // redirect to main posts page
-            return redirect()->route('Resourceposts.index'); 
+            return redirect()->route('Resourceposts'); 
             
     }
 
