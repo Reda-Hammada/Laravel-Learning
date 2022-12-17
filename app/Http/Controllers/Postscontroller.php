@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Posts;
 use App\Models\Author;
 use App\Http\Requests\Postrequest;
+use Illuminate\Support\Facades\Gate;
+
 // use Illuminate\Support\Facades\Auth;
 
 class Postscontroller extends Controller
@@ -15,6 +17,7 @@ class Postscontroller extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+       
     }
 
     /**
@@ -117,6 +120,17 @@ class Postscontroller extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        if(Gate::denies('update-post', $post)):
+            
+            abort(403);
+
+        endif;
+
+        //deffirent way 
+        
+        $this->authorize('update-post', $post);
+
          $request->validate([
                 'title' => 'bail|required',
                 'content' => 'required',

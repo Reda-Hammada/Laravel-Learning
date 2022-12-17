@@ -12,6 +12,10 @@ On this repository I will be sharing what I learnt about Laravel:
 - Eloquent Relationship (one to one, one to many , many to many , oneHasManyThrough ...)  
 - REST APIs  
 - Caching  
-- Assets (Laravel mix)  
-- Testing  
+- Assets (Laravel mix && Vite)     
+- Testing    
+- Gates && Policies   
+
+### References :
+
 
