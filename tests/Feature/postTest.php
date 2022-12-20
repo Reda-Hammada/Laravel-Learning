@@ -17,9 +17,11 @@ class postTest extends TestCase
     {
 
         $params = [
+
              'title'=> 'reda reda',
-             'content'=>'reda reda reda'
+             'content'=>'reda reda reda',
         ];
+        
         $response = $this->POST('/Resourceposts/store',$params)
         ->assertRedirect('/Resourceposts');
 

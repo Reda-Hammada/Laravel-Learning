@@ -7,6 +7,7 @@ use App\Models\Posts;
 use App\Models\Author;
 use App\Http\Requests\Postrequest;
 use Illuminate\Support\Facades\Gate;
+use App\Policies\Adminpolitcy;
 
 // use Illuminate\Support\Facades\Auth;
 
